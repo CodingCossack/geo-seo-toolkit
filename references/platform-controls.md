@@ -1,8 +1,5 @@
 # Platform and crawler controls
 
-Use this reference for AI-search platforms, crawler categories, `robots.txt`,
-WAF or CDN bot policy, IndexNow, and `llms.txt`.
-
 ## Start with shared search foundations
 
 For Google, AI Overviews and AI Mode retrieve from the core Search index and

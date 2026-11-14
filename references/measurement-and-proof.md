@@ -1,8 +1,5 @@
 # Measurement and proof
 
-Use this reference for Search Console, analytics, ranking or traffic
-incidents, release identity, fixtures, dashboards, and completion claims.
-
 ## Name the state you observed
 
 Keep these planes separate:
@@ -19,13 +16,6 @@ Keep these planes separate:
 | Search dashboard | the engine's recorded crawl, canonical, index, or performance state at its timestamp |
 | Search result | what the engine served for that query, locale, device, and time |
 | Analytics or conversion | measured visits or actions under that tracking contract |
-
-Do not collapse these into "done". A commit is not a release; an uploaded
-version is not necessarily promoted; a local test is not live behaviour; a
-saved dashboard rule is not its public effect; and a cache bypass is not the
-canonical URL's state. Tie a public claim to the deployed revision and data
-generation when the platform exposes them. If the release cannot be
-identified, state that gap.
 
 ## Diagnose outcome changes without inventing causality
 
@@ -96,15 +86,3 @@ Tests that repeat the same literal source, generated policy, or fixture are
 not independent evidence, and a verification gate can itself be broken —
 when a gate's verdict is load-bearing, confirm the gate can still fail.
 Prefer the seam where a false public result becomes observable.
-
-## Bound the claim and stop
-
-An audit is complete when it identifies the material root causes within
-scope, ties each to current evidence, and states what would prove a fix. An
-implementation is complete when the owning change is validated locally and at
-every authorised external seam required by the outcome.
-
-Do not extend the task to every low-value SEO possibility. Report remaining
-material gaps and stop when further progress needs a product decision,
-account access, deployment authority, engine recrawl, or time-based outcome
-evidence.

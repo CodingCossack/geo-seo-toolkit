@@ -1,156 +1,87 @@
 ---
 name: geo-seo-toolkit
 description: >-
-  Use whenever search or AI-search visibility of a real site is at stake:
-  diagnosing indexing, ranking, crawling, or citation problems; implementing or
-  reviewing canonicals, redirects, robots and crawler policy, sitemaps,
-  rendered HTML, structured data, or programmatic URL sets; launching,
-  migrating, or retiring public pages or domains; and verifying that any such
-  change is actually live and correct on the public surface. Covers Search
-  Console and analytics diagnosis, JobPosting and other schema, local business
-  and portfolio SEO, CDN/WAF/cache and AI-crawler access, and re-checking work
-  previously declared fixed. Do not use for generic marketing copy, sales CRM,
-  or outreach without a real site and evidence.
+  Diagnose, improve and verify SEO and AI-search visibility for real sites.
+  Use for indexing, crawling, canonicals, redirects, sitemaps, rendering,
+  structured data, programmatic pages, site migrations, crawler controls
+  and search-performance diagnosis. Excludes generic marketing copy and outreach.
 ---
 
-# SEO and AI Search
+# SEO and AI search
 
-Search visibility is a chain. A correct tag, green build, passing test, saved
-dashboard rule, accepted submission, or crawler `200` proves only its own
-layer. For each material symptom or URL class in scope, find the first broken
-owner in its real chain, fix that owner rather than downstream symptoms, then
-prove the result at the surface that carries the user outcome.
+## Scope and diagnosis
 
-## Start with the requested outcome
+Establish the target host, URL class, intended behaviour and authorised outcome.
+Confirm that the repository or connected property owns the target. When using
+local code to explain public behaviour, identify its relationship to the deployed
+revision and data.
 
-Establish before broad investigation:
+Reproduce the symptom with the relevant host, path, protocol, method, user agent
+or account property. For a previously fixed symptom, inspect the prior fix and
+its closing evidence before repeating it.
 
-- the exact domain, host, URL class, audience, and search surface in scope;
-- whether the task is diagnosis, implementation, release, or measurement;
-- the intended URL and content contract, including any migration or retirement;
-- which repository, dataset, deployment, edge, and external property currently
-  own that contract.
+Trace only the relevant layers:
 
-Resolve names from repository and provider configuration, not from prose.
-Before broader inspection, make one direct check that the current workspace or
-connected property owns the target. If it does not, locate or request the
-correct one instead of mining the wrong workspace. When local code is used to
-explain public behaviour, establish how that revision relates to origin and
-the deployed release.
+`source or URL owner → generated output → commit → deployment and data → CDN/WAF/cache → crawler → engine record → measured outcome`
 
-## Trace one contract end to end
+Locate the first divergence and the layer producing it. Edge rules and platform
+normalisation may run before application code. Fix the existing owner and check
+affected consumers; stop expanding the investigation once the mechanism explains
+the symptom. Report conflicting states and anything still unexplained.
 
-Follow only the layers relevant to the symptom:
+## Decision rules
 
-`source fact or URL owner -> generated output or data -> committed revision -> deployed release (code + data) -> CDN/WAF/edge cache -> crawler access -> engine record -> measured outcome`
+- Keep URL identity consistent across redirects, canonicals, internal links,
+  sitemaps, structured data and notifications where their contracts require it.
+  Host, slash and encoding policies are project-specific.
+- Base permanent aliases on semantic identity, not temporary content or
+  result-set equality. Redirect only to a relevant, indexable equivalent.
+- Preserve unknowns and source evidence. Never invent entity facts to fill
+  visible content or schema. Keep historical attribution intact.
+- Prioritise useful public HTML and crawlable links. Schema, bot routes and
+  crawler-only files cannot substitute for page content.
+- Do not assign composite SEO or GEO scores without a user-supplied calibrated
+  model. Prioritise demonstrated blockage, breadth and user impact.
+- Technical eligibility, submission, indexing, ranking, citation and conversion
+  are separate outcomes. Traffic changes alone do not establish causality.
 
-Attribute every observed public response to the layer that actually produced
-it before changing any layer. Zone redirect rules, WAF and bot controls,
-managed robots files, platform URL normalisation, and edge caches can act
-before your application code — and your code's own tests can never prove that
-phase ordering. When two layers disagree, report both states instead of
-choosing the more convenient one. Do not audit every layer by default; stop
-expanding when evidence identifies the owner and the smallest coherent fix.
+## Verification and completion
 
-## Work the root cause
+Use evidence that would fail if the cause remained; repeating a generated literal
+or fixture is not independent verification.
 
-1. Reproduce the exact symptom on the exact host, path, protocol, method, and
-   relevant user agent or account property.
-2. If this symptom was declared fixed before, first find the prior fix and the
-   evidence that closed it. That shows what was proved and which later surface
-   now contradicts it; do not repeat the same fix without explaining the gap.
-3. Inspect current source, generated artefacts, runtime data, deployed
-   revision, edge response, and dashboard state only as needed to locate the
-   first divergence.
-4. Find the existing owner of the URL, entity fact, indexability decision, or
-   crawler control. Fix that owner instead of adding another override, then
-   check the consumers affected by that decision.
-5. Prove the change at the lowest seam that contains the risk, then at the
-   public seam below.
-6. Report each state separately. Never turn eligibility or submission into a
-   claim of indexing, ranking, citation, traffic, or conversion.
+For public changes, recheck the original failing request and the exact production
+canonical URL without cache-busting parameters. Use GET, plus HEAD when redirects
+or caching are involved. Identify the deployed revision and data generation when
+available. A preview, build, commit, cache bypass, saved rule or accepted submission
+proves only that state, not the public result.
 
-## The public seam gates "done"
+Report the cause, owning layer, changes, evidence and material gaps. Claim a fix
+only at the observed plane; if public or external verification is unavailable,
+state that limit. Stop when the authorised outcome is proved or further progress
+requires access, authority, a product decision or later engine evidence.
 
-Before calling any public-facing change complete, fetch the exact queryless
-canonical URL on the production host — GET, plus HEAD when redirects or caches
-are involved — and tie the response to the deployed release (and data
-generation) when the platform exposes one. None of the following count as that
-proof: a local build, a preview or platform-default host, a feature branch, a
-cache-busted or query-variant URL, a green test suite, a merged commit, an
-accepted submission, or a dashboard rule that reports "saved". Each proves
-only its own plane; say which plane you proved.
+## References
 
-## Non-negotiable judgement rules
+Read only those needed by the task:
 
-- Where surfaces refer to the same URL identity, redirects, canonicals,
-  internal links, sitemaps, alternate hosts or encodings, structured data, and
-  notifications should agree. The chosen host or slash policy is
-  project-specific.
-- Canonical identity is a semantic decision. Current content or result-set
-  equality alone does not prove that two routes are permanent duplicates.
-- A redirect is right only when its target is a true equivalent that is itself
-  indexable and relevant. Transport success (`301 -> 200`) with a wrong,
-  `noindex`, or generic target is content loss, not migration.
-- Missing, ambiguous, rejected, and not-evaluated data are not positive facts.
-  Do not replace them with plausible employment terms, locations, dates,
-  prices, categories, ratings, profiles, or business details — visibly absent
-  beats silently invented.
-- Normal crawlable HTML, links, and public content are primary. Crawler-only
-  files, Markdown mirrors, bot routes, or schema do not repair a weak, false,
-  or client-side-only page.
-- A deterministic tool or test can be consistently wrong, and a check that
-  re-reads the same generated literal or fixture is not independent evidence.
-  Treat tool output as an observation whose assumptions must match the
-  contract.
-- Do not assign a composite SEO, GEO, citability, authority, or platform score
-  unless the user supplied a calibrated model. Rank findings by demonstrated
-  blockage, breadth, user impact, and fix leverage.
-- A technical repair proves technical eligibility, not SEO success. Traffic
-  and ranking changes are evidence to investigate, not proof of one cause.
+- [Public delivery](references/public-delivery.md): hosts, redirects, canonicals,
+  robots, rendering, encoding, sitemaps, migrations and caches.
+- [Content and entities](references/content-and-entities.md): page usefulness,
+  factual authority, schema, local business, portfolios, images and backlinks.
+- [Dynamic pages](references/dynamic-pages.md): programmatic routes, jobs,
+  inventories, pagination, lifecycle and coverage.
+- [Platform controls](references/platform-controls.md): AI-search consumers,
+  crawler permissions, WAF controls, IndexNow and `llms.txt`.
+- [Measurement and proof](references/measurement-and-proof.md): Search Console,
+  analytics, outcome diagnosis and evidence selection.
 
-## Route to the smallest relevant reference
+Verify current first-party documentation when platform behaviour affects a decision.
 
-- For hosts, DNS/TLS, redirects, canonicals, robots, rendering, IDN and
-  encoded URLs, sitemaps, migrations, generated output, CDN/WAF/edge
-  behaviour, or caching, read
-  [references/public-delivery.md](references/public-delivery.md).
-- For helpful content, internal discovery, entity truth, structured data,
-  local business, portfolio evidence, images, or backlinks, read
-  [references/content-and-entities.md](references/content-and-entities.md).
-- For programmatic routes, jobs, changing inventories, semantic defaults,
-  pagination, lifecycle, error pages, or notification feeds, read
-  [references/dynamic-pages.md](references/dynamic-pages.md).
-- For Google AI features, ChatGPT search, Claude, Perplexity, bot categories,
-  `robots.txt` policy, WAF and bot-management controls, IndexNow, or
-  `llms.txt`, read
-  [references/platform-controls.md](references/platform-controls.md).
-- For Search Console, analytics, ranking loss, release identity, fixtures,
-  dashboards, or a claim that work is fixed or complete, read
-  [references/measurement-and-proof.md](references/measurement-and-proof.md).
+## Authority
 
-Read more than one reference only when the task crosses those boundaries.
-
-## Authority and finish
-
-An audit or diagnosis does not authorise code changes, deployment, Search
-Console submission, provider settings, profile edits, outreach, or
-publication. An implementation request authorises the smallest coherent
-in-scope change and its proportionate validation. The indexability of a route
-class, a canonical consolidation, a retirement status, and a crawler policy
-are each product decisions: never change one as a side effect of another
-task, and stop and ask when the missing decision is the product owner's to
-make. Preserve unrelated repository and external state; report material
-incidental findings instead of fixing them unasked.
-
-Finish with:
-
-- the root causes and owning layers;
-- what changed, including intentional URL or content-contract changes;
-- evidence for each local, deployed, public, dashboard, and search-engine
-  claim you actually make;
-- any material gap that prevents a stronger claim.
-
-Do not call the work fixed while the relevant public, cached, or external
-state still contradicts it — and if you cannot observe that state, say so
-instead of assuming it.
+Diagnosis does not authorise edits, deployment, submissions, provider changes or
+outreach. Implement only the authorised outcome and preserve unrelated state.
+Indexability, consolidation, retirement and crawler policy are product decisions;
+ask when a missing decision materially changes the result. Report incidental
+findings without expanding the task.

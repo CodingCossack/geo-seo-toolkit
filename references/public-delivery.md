@@ -1,8 +1,5 @@
 # Public delivery
 
-Use this reference for URL identity, technical delivery, crawl and index
-controls, rendering, migrations, generated sites, and edge behaviour.
-
 ## Establish the real URL contract
 
 Derive the canonical host and route set from current configuration, provider
@@ -104,10 +101,9 @@ Check, in order as needed:
 8. canonical and sitemap membership.
 
 A permissive `robots.txt` cannot bypass an upstream WAF block, and a crawler
-must be able to fetch a page before it can read a `noindex` on it. Google
-treats a robots.txt fetch returning 4xx (except 429) as "no robots.txt" and
-5xx as a temporary full-crawl stop, per its current
-[robots.txt documentation](https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec).
+must be able to fetch a page before it can read a `noindex` on it. For robots
+fetch errors, see
+[platform controls](platform-controls.md#robots-and-enforcement-are-separate).
 
 ## Rendering and crawlability of content
 
@@ -124,9 +120,6 @@ treats a robots.txt fetch returning 4xx (except 429) as "no robots.txt" and
   and [mobile-first indexing](https://developers.google.com/search/docs/crawling-indexing/mobile/mobile-sites-mobile-first-indexing).
 
 ## Verify generated and cached delivery
-
-Source, a successful build, generated output, preview, origin, custom domain,
-and edge cache are separate states.
 
 - Rebuild before judging generated output; scan the real output for both
   required content and retired residue, and remember that a stale build
@@ -152,8 +145,8 @@ When locale variants exist, keep each genuine translation or regional page's
 canonical in the appropriate language. Verify valid locale codes, self and
 return annotations, `x-default` where intended, and agreement between HTML or
 sitemap `hreflang` projections. When canonical and `hreflang` disagree, the
-  the conflict can cause alternates to be ignored. Do not canonicalise genuine
-  variants together merely to simplify the route set. Use Google's current
+conflict can cause alternates to be ignored. Do not canonicalise genuine
+variants together merely to simplify the route set. Use Google's current
 [localised-version guidance](https://developers.google.com/search/docs/specialty/international/localized-versions).
 
 ## Site moves

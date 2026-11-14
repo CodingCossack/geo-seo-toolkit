@@ -1,9 +1,5 @@
 # Dynamic and programmatic pages
 
-Use this reference for large or changing route sets, jobs, inventories, search
-and pagination, lifecycle transitions, semantic extraction, and notification
-feeds.
-
 ## Separate the decisions
 
 Do not hide several product decisions behind one `eligible` flag. Model and
@@ -22,11 +18,6 @@ decisions are identical. When one decision changes, check for copied rules
 that still govern another affected projection.
 
 ## Keep canonical identity stable
-
-Canonical aliases need stable semantic identity. Current result-set equality
-alone does not make two routes permanent duplicates: inventories, prices, and
-page membership can change. Base permanent aliases on route meaning, not a
-single membership snapshot.
 
 For search, filters, facets, and pagination, decide which combinations are
 useful landing pages and which are crawlable, indexable, canonical, internally

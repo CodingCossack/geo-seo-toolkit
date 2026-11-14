@@ -1,8 +1,5 @@
 # Content and entities
 
-Use this reference for page usefulness, internal discovery, entity facts,
-structured data, local business, portfolio evidence, images, and backlinks.
-
 ## Build for the user and the real query
 
 Identify the audience, intent, and action the page must support. Prefer
@@ -39,9 +36,8 @@ parser passing proves syntax, not truth.
 
 Do not let a generator or "brand consistency" normaliser rewrite
 evidence-bearing historical names, credits, dates, legal entities, or
-delivery scope. Current presentation and historical attribution can be
-separate fields when both are true; a rule broad enough to launder history
-will eventually delete facts.
+delivery scope. Keep current presentation and historical attribution separate
+when both are true.
 
 ## Structured data
 
