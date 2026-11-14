@@ -1,6 +1,6 @@
 # geo-seo-toolkit
 
-Diagnose, improve and verify SEO and AI-search visibility for real sites.
+Diagnose and verify technical SEO and AI-search visibility for real sites.
 Start with [SKILL.md](SKILL.md), which routes to references for public delivery,
 content, dynamic pages, crawler controls and measurement.
 
